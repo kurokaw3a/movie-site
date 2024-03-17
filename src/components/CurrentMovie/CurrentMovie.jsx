@@ -150,7 +150,7 @@ const CurrentMovie = () => {
         </div>
           </div>
         </div>
-        <h1 className='text-xl text-zinc-200 mb-[10px] mt-[10px]'>Trailers</h1>
+        {currentMovie.videos?.length > 0 && <h1 className='text-xl text-zinc-200 mb-[10px] mt-[10px]'>Trailers</h1>}
       <div className='mt-[5px] flex justify-center md:block'>
           {currentMovie.videos?.length > 1 && (
           <Slider {...settings3} className='w-[350px] max-w-[350px] md:w-max md:max-w-[600px] cursor-grab'>
