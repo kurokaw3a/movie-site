@@ -155,12 +155,12 @@ const CurrentMovie = () => {
           {currentMovie.videos?.length > 1 && (
           <Slider {...settings3} className='w-[350px] max-w-[350px] md:w-max md:max-w-[600px] cursor-grab'>
             {currentMovie.videos?.map((el)=>(
-               <iframe allow='Allow-Access-Control-Origin' title='trailer' frameborder="0" src={`http://www.youtube.com/embed/${el.key}`} className='w-[350px] h-[220px] md:w-[600px] md:h-[300px]'/>
+               <iframe title='trailer' frameborder="0" src={`https://www.youtube.com/embed/${el.key}`} className='w-[350px] h-[220px] md:w-[600px] md:h-[300px]'/>
             ))}
             </Slider>
               )} 
           {currentMovie.videos?.length === 1 && (
-               <iframe allow='Allow-Access-Control-Origin' title='trailer' frameborder="0" src={'http://www.youtube.com/embed/' + currentMovie.videos[0]?.key} className='w-[350px] h-[220px] md:w-[600px] md:h-[300px]'/>
+               <iframe title='trailer' frameborder="0" src={'https://www.youtube.com/embed/' + currentMovie.videos[0]?.key} className='w-[350px] h-[220px] md:w-[600px] md:h-[300px]'/>
               )} 
               {!currentMovie && (
                 <Slider {...settings} className='max-w-[350px] md:max-w-[600px] cursor-grab'>
