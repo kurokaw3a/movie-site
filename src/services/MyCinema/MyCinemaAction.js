@@ -157,7 +157,7 @@ export const getFilmVideos = createAsyncThunk(
         if (response.results[i].type === 'Trailer')
           video.push(response.results[i])
       }
-      return { movieVideo: video[0] }
+      return { movieVideo: video }
     } catch (error) {
       return rejectWithValue(error.message)
     }

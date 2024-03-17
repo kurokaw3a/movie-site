@@ -15,25 +15,15 @@ const HeaderSearch = () => {
     }
     }
     const {keyword} = useParams()
-    const selectLanguage = (e)=>{
-     localStorage.setItem('#l34', e.target.value)
-     dispatch(getPopularFilms())
-    }
     return (
         <header className='flex items-center justify-center h-[80px] md:gap-[5px] bg-gradient-to-b from-zinc-950 to-neutral-900'>
         <form onSubmit={searchFilm}>
         <input
-          className='md:w-[500px] h-12 text-3xl bg-transparent border-b-2 outline-none text-white'
+          className='w-[95%] md:w-[500px] h-12 text-3xl bg-transparent border-b-2 outline-none text-white'
           type='text'
           placeholder={keyword || 'search'}
           />
         </form>
-        {location.pathname === '/' && 
-        <select className="absolute right-0 mb-[55px] md:mb-0 md:mr-[50px] outline-none bg-transparent text-white cursor-pointer" onChange={selectLanguage}>
-          <option className="text-black" value="en" selected={localStorage.getItem('#l34') === 'en'}>English</option>
-          <option className="text-black" value="ru" selected={localStorage.getItem('#l34') === 'ru'}>Русский</option>
-        </select>
-        }
       </header>
     );
 };

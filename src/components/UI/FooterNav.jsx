@@ -10,7 +10,7 @@ const FooterNav = () => {
           });
     }
     return (
-        <nav className='fixed w-[100%] bottom-0 p-[8px] bg-neutral-950 text-[whitesmoke] flex items-center justify-between'>
+        <nav className='fixed w-[100%] bottom-0 p-[10px] bg-neutral-950 text-[whitesmoke] flex items-center justify-between'>
             <NavLink to={-1}>
             <img className="w-[25px]" src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Back-512.png" alt="error" />
             </NavLink>
