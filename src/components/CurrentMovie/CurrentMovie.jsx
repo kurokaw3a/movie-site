@@ -72,7 +72,7 @@ const CurrentMovie = () => {
     <Loader />
   ) : (
     <div>
-    <div className='md:flex md:gap-12 items-start font-[sans]'>
+    <div className='md:flex md:gap-12 items-start font-mono'>
       <div className='flex justify-center'>
        <img className='md:hidden absolute h-[350px] brightness-[0.3] blur-[3px] top-0 bg-gradient-to-b from-zinc-950 to-neutral-900' src={`https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`} alt="error" />
         <img
