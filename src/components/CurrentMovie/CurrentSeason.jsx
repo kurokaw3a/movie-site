@@ -33,7 +33,7 @@ const CurrentSeason = () => {
     <Loader />
   ) : (
     <div>
-    <div className='flex gap-4 md:gap-12 items-start font-mono'>
+    <div className='flex gap-4 md:gap-12 items-start font-sans'>
       <div className='max-w-96 flex-col'>
         <img
           className='max-w-[150px] md:max-w-96'
