@@ -1,24 +1,24 @@
-import { Outlet, useLocation, useParams } from 'react-router-dom'
-import FooterNav from '../components/UI/FooterNav'
-import HeaderSearch from '../components/UI/HeaderSearch'
+import { Outlet, useLocation } from 'react-router-dom'
+import Footer from '../components/UI/Footer'
+import Header from '../components/UI/Header'
 
 const Layout = () => {
   const location = useLocation()
-  const { keyword } = useParams()
+  // const { keyword } = useParams()
   return (
     <div>
-      {location.pathname === '/' &&
+      {/* {location.pathname === '/' && */}
       <div className='sticky top-0'>
-    <HeaderSearch/>
+    <Header/>
       </div>
-  }
-  {keyword && <HeaderSearch/>}
+  {/* } */}
+  {/* {keyword && <HeaderSearch/>} */}
     <main className='m-[10px] md:m-[40px]'>
       <Outlet />
     </main>
     {location.pathname !== '/' && 
       <div className='md:hidden'>
-      <FooterNav/>
+      <Footer/>
       </div>
       }
     </div>

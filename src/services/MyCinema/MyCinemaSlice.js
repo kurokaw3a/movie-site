@@ -43,8 +43,12 @@ export const MyCinemaSlice = createSlice({
         state.searchStatus = 'pending'
       })
       .addCase(searchTv.fulfilled, (state, action) => {
-        state.searchStatus = 'success'
-        state.searchResult = action.payload.result
+        if(action.payload.result.length < 1){
+          state.searchStatus = "notfound"
+        }else{
+          state.searchStatus = 'success'
+          state.searchResult = action.payload.result
+        }
       })
       .addCase(searchTv.rejected, (state) => {
         state.searchStatus = 'error'

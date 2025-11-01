@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Slider from 'react-slick'
 import { getTvSeasonById } from '../../services/MyCinema/MyCinemaAction'
 import Loader from '../UI/loader/Loader'
+import { settingsSeason } from '../../constants/_slider'
 
 const CurrentSeason = () => {
   const { currentSeason, currentSeasonStatus } = useSelector(
@@ -22,19 +23,13 @@ const CurrentSeason = () => {
       })
     )
   }, [dispatch, id, season, en, ru])
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  }
+
   return currentSeasonStatus === 'pending' ? (
     <Loader />
   ) : (
     <div>
 
-    <div className='flex gap-4 md:gap-12 items-start font-[sans]'>
+    <div className='flex gap-4 md:gap-12 items-start font-["Inter"]'>
       <div className='max-w-96 flex-col'>
         <img
           className='max-w-[150px] md:max-w-96'
@@ -45,12 +40,12 @@ const CurrentSeason = () => {
       <div className='text-white flex flex-col gap-y-[30px]'>
         <div className='space-y-2'>
             <h1 className='text-xl md:text-4xl md:max-w-[800px]'>{currentSeason.title}</h1>
-          <p className='text-white md:max-w-2xl max-h-[125px] md:max-h-[90px] overflow-auto text-sm md:text-xl'>
+          <p className='text-white md:max-w-2xl text-sm md:text-xl'>
             {currentSeason.overview}
           </p>
         </div>
         <div className='hidden md:block'>
-          <Slider {...settings} className='max-w-[500px] cursor-grab'>
+          <Slider {...settingsSeason} className='max-w-[500px] cursor-grab'>
             {currentSeason.episodes?.map((el, i) => (
               <div>
                 <img
@@ -89,7 +84,7 @@ const CurrentSeason = () => {
     <div className='flex flex-col items-start gap-2 text-white'>
       <h1 className=' text-xl font-bold'>Episodes:</h1>
     <div>
-          <Slider {...settings} className='max-w-[320px] cursor-grab'>
+          <Slider {...settingsSeason} className='max-w-[320px] cursor-grab'>
             {currentSeason.episodes?.map((el, i) => (
               <div>
                 <img

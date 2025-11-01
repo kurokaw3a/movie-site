@@ -11,8 +11,8 @@ export const Root = () => {
       <Route path='' element={<Layout />}>
         <Route path='/' element={<Main />} />
         <Route path='/:keyword' element={<Results />} />
-        <Route path='/:title/:id' element={<CurrentMovie />} />
-        <Route path='/:title/:id/:season' element={<CurrentSeason />} />
+        <Route path='/:title/:type/:id' element={<CurrentMovie />} />
+        <Route path='/:title/:type/:id/:season' element={<CurrentSeason />} />
       </Route>
     </Routes>
   )

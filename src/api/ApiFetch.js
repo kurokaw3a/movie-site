@@ -1,6 +1,5 @@
 export const initialUrl = 'https://api.themoviedb.org/3'
-const apiKey =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDUzYmFkOWQxNjBiMjgwYjVhODE0MmJjZmYyY2QyNSIsInN1YiI6IjY1ZDFjZTQ1YjQyMjQyMDE4N2IyZWVjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.J249OrEFbORZCdeQ0LkjDkb8syAW-jduz6H1KKNOR5g'
+const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDUzYmFkOWQxNjBiMjgwYjVhODE0MmJjZmYyY2QyNSIsInN1YiI6IjY1ZDFjZTQ1YjQyMjQyMDE4N2IyZWVjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.J249OrEFbORZCdeQ0LkjDkb8syAW-jduz6H1KKNOR5g'
 
 export function ApiFetch(props) {
   const requestOptions = {
