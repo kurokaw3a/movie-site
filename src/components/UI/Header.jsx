@@ -19,7 +19,7 @@ const Header = () => {
     <header className='flex items-center justify-between pr-10 pl-10 h-[80px] md:gap-[5px] bg-gradient-to-b from-zinc-950 to-neutral-900 font-["Inter"]'>
       {location.pathname !== '/' && (
         <div onClick={()=>navigate(-1)} className='text-white md:block hidden cursor-pointer'>
-          {whichLang() ? 'Назад' : 'back home'}
+          {whichLang() ? 'Назад' : 'back'}
         </div>
       )}
       <form onSubmit={searchFilm}>

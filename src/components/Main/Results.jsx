@@ -11,15 +11,16 @@ const Results = () => {
   const { keyword } = useParams()
   const en = /[A-za-zA-Z]/
   const ru = /[А-яа-яА-Я]/
+  const language = (en.test(keyword) && 'en') || (ru.test(keyword) && 'ru')
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(
       searchFilm({
         name: keyword,
-        language: (en.test(keyword) && 'en') || (ru.test(keyword) && 'ru'),
+        language,
       })
     )
-  }, [keyword, dispatch])
+  }, [keyword, language, dispatch])
   const location = useLocation()
   useEffect(() => {
     dispatch(MyCinemaSlice.actions.clear())
