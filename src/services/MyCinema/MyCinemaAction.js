@@ -6,22 +6,23 @@ const url = 'https://image.tmdb.org/t/p/w500'
 
 export const getPopularFilms = createAsyncThunk(
    'get/popularFilms',
-   async(_,{rejectWithValue})=>{
+   async(props,{rejectWithValue})=>{
   try{
      const response = await ApiFetch({
-      url:`/movie/popular?language=${localStorage.getItem('#l34')}`
+      url:`/trending/all/day?language=${localStorage.getItem('#l34')}&page=${props.page}`
   })
   const result = []
+  
   for (let i = 0; i < response.results?.length; i++) {
     if (response.results[i].poster_path && response.results[i].vote_average)
       result.push({
-        type: 'movie',
+        type: response.results[i].media_type,
         id: response.results[i].id,
-        title: response.results[i].title,
+        title: response.results[i].title || response.results[i].name,
         overview: response.results[i].overview,
         poster: url + response.results[i].poster_path,
         backdrop: url + response.results[i].backdrop_path,
-        date: response.results[i].release_date,
+        date: response.results[i].release_date || response.results[i].first_air_date,
         rating: response.results[i].vote_average,
       })
   }
@@ -114,6 +115,8 @@ export const getTvById = createAsyncThunk(
       })
       dispatch(getFilmVideos({ ...props, type: 'tv' }))
       dispatch(getFilmImages({ ...props, type: 'tv' }))
+      console.log(response);
+      
       return {
         currentTv: {
           title: response.name,
@@ -170,11 +173,15 @@ export const getFilmImages = createAsyncThunk(
       const response = await ApiFetch({
         url: `/${props.type}/${props.id}/images`,
       })
-      const images = []
+      const backdrops = []
+      const posters = []
       for (let i = 0; i < response.backdrops?.length; i++) {
-        images.push(url + response.backdrops[i].file_path)
+        backdrops.push(url + response.backdrops[i].file_path)
       }
-      return { movieImages: images.reverse() }
+       for (let i = 0; i < response.posters?.length; i++) {
+        posters.push(url + response.posters[i].file_path)
+      }
+      return { movieImages: backdrops.reverse() }
     } catch (error) {
       return rejectWithValue(error.message)
     }
