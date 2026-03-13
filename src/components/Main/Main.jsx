@@ -11,7 +11,7 @@ const Main = () => {
   const [page, setPage] = useState(parseInt(sessionStorage.getItem("page")) || 1)
   useEffect(() => {
     dispatch(getPopularFilms({ page }))
-  }, [page])
+  }, [page, dispatch])
   const { popularFilmsResult } = useSelector((state) => state.cinema)
   const navToCurrentMovie = (title, type, id) => {
     navigate(`/${title}/${type}/${id}`)
@@ -21,9 +21,9 @@ const Main = () => {
     localStorage.setItem('#l34', e.target.value)
     dispatch(getPopularFilms({ page }))
   }
-  const selectGenre = (e) => {
-    dispatch()
-  }
+  // const selectGenre = (e) => {
+  //   dispatch()
+  // }
   const nextPage = () => {
     setPage((prev) => prev + 1)
     sessionStorage.setItem('page', page + 1)

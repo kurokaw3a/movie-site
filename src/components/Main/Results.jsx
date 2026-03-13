@@ -19,7 +19,7 @@ const Results = () => {
         language: (en.test(keyword) && 'en') || (ru.test(keyword) && 'ru'),
       })
     )
-  }, [keyword])
+  }, [keyword, dispatch])
   const location = useLocation()
   useEffect(() => {
     dispatch(MyCinemaSlice.actions.clear())
