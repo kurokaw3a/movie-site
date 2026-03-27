@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { MyCinemaSlice } from '../../services/MyCinema/MyCinemaSlice'
 import { useDispatch } from 'react-redux'
 import { whichLang } from '../../constants/_language'
@@ -6,7 +6,6 @@ import { whichLang } from '../../constants/_language'
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation()
   const searchFilm = (event) => {
     event.preventDefault()
     dispatch(MyCinemaSlice.actions.clear())
@@ -14,21 +13,20 @@ const Header = () => {
       navigate(`/${event.target[0]?.value}`)
     }
   }
-  const { keyword } = useParams()
+
   return (
-    <header className='flex items-center justify-between pr-10 pl-10 h-[80px] md:gap-[5px] bg-gradient-to-b from-zinc-950 to-neutral-900 font-["Inter"]'>
-      {location.pathname !== '/' && (
-        <div onClick={()=>navigate(-1)} className='text-white md:block hidden cursor-pointer'>
-          {whichLang() ? 'Назад' : 'back'}
-        </div>
-      )}
-      <form onSubmit={searchFilm}>
-        <input
-          className='w-[95%] md:w-[500px] h-12 text-3xl bg-transparent border-b-2 outline-none text-white'
-          type='text'
-          placeholder={keyword || whichLang() ? 'поиск' : 'search'}
-        />
-      </form>
+    <header className='w-full flex items-center justify-center pr-10 pl-10 h-[80px] md:gap-[5px] bg-gradient-to-b from-zinc-950 to-[rgb(26,26,26)] font-["Inter"]'>
+      <div>
+        <nav>
+          <form onSubmit={searchFilm}>
+            <input
+              className='w-[300px] md:w-[500px] h-8 text-xl pl-3 bg-[#303030] rounded outline-none text-white'
+              type='text'
+              placeholder={whichLang() ? 'поиск' : 'search'}
+            />
+          </form>
+        </nav>
+      </div>
     </header>
   )
 }

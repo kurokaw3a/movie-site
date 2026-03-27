@@ -44,7 +44,7 @@ export const MyCinemaSlice = createSlice({
       })
       .addCase(searchTv.fulfilled, (state, action) => {
         if(action.payload.result.length < 1){
-          state.searchStatus = "notfound"
+          state.searchStatus = "error"
         }else{
           state.searchStatus = 'success'
           state.searchResult = action.payload.result

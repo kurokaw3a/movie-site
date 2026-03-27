@@ -115,7 +115,6 @@ export const getTvById = createAsyncThunk(
       })
       dispatch(getFilmVideos({ ...props, type: 'tv' }))
       dispatch(getFilmImages({ ...props, type: 'tv' }))
-      console.log(response);
       
       return {
         currentTv: {
@@ -173,15 +172,16 @@ export const getFilmImages = createAsyncThunk(
       const response = await ApiFetch({
         url: `/${props.type}/${props.id}/images`,
       })
+      
       const backdrops = []
       const posters = []
       for (let i = 0; i < response.backdrops?.length; i++) {
-        backdrops.push(url + response.backdrops[i].file_path)
+        backdrops.push(url + response.backdrops[i].file_path, response.backdrops[i])
       }
        for (let i = 0; i < response.posters?.length; i++) {
         posters.push(url + response.posters[i].file_path)
       }
-      return { movieImages: backdrops.reverse() }
+      return { movieImages: backdrops}
     } catch (error) {
       return rejectWithValue(error.message)
     }

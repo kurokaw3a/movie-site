@@ -1,65 +1,34 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { searchFilm } from '../../services/MyCinema/MyCinemaAction'
-import Loader from '../UI/loader/Loader'
-import { useEffect } from 'react'
-import { MyCinemaSlice } from '../../services/MyCinema/MyCinemaSlice'
-import { whichLang } from '../../constants/_language'
+import { useNavigate } from 'react-router-dom'
 
-const Results = () => {
-  const { searchResult, searchStatus } = useSelector((state) => state.cinema)
-  const { keyword } = useParams()
-  const en = /[A-za-zA-Z]/
-  const ru = /[А-яа-яА-Я]/
-  const language = (en.test(keyword) && 'en') || (ru.test(keyword) && 'ru')
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(
-      searchFilm({
-        name: keyword,
-        language,
-      })
-    )
-  }, [keyword, language, dispatch])
-  const location = useLocation()
-  useEffect(() => {
-    dispatch(MyCinemaSlice.actions.clear())
-  }, [location.pathname, dispatch])
+const Results = ({ list }) => {
   const navigate = useNavigate()
+  const t = /[?]/
+
   const navToCurrentMovie = (title, type, id) => {
-    navigate(`/${title}/${type}/${id}`)
+    const mtitle = String(title)
+    navigate(`/${t.test(mtitle) ? mtitle.replace("?", "") : mtitle}/${type}/${id}`)
+
   }
   return (
     <div>
-      {searchStatus === 'pending' ? (
-        <Loader />
-      ) : (
-        <div className='flex md:justify-center'>
-          <div className='flex flex-wrap w-[100%] justify-center md:justify-normal md:w-[1300px] gap-[20px] mb-[60px] md:mb-0'>
-            {searchResult?.map((el) => (
-              <div
-                onClickCapture={() =>
-                  navToCurrentMovie(el.title, el.type, el.id)
-                }
-              >
-                <img
-                  className='w-[165px] md:w-[200px] cursor-pointer'
-                  src={el.poster}
-                  alt='none'
-                />
-                <h4 className='text-white font-["Inter"] text-[12px] md:text-[15px] font-medium max-w-[150px] md:w-[200px]'>
-                  {el.title}
-                </h4>
-              </div>
-            ))}
-          </div>
+      <div className='flex md:justify-center'>
+        <div className='flex flex-wrap w-[100%] justify-center md:justify-normal md:w-[1300px] gap-[20px] mb-[60px] md:mb-0'>
+          {list?.map((el) => (
+            <div
+              onClickCapture={() => navToCurrentMovie(el.title, el.type, el.id)}
+            >
+              <img
+                className='w-[165px] md:w-[200px] cursor-pointer'
+                src={el.poster}
+                alt='none'
+              />
+              <h4 className='text-white font-["Inter"] text-[12px] md:text-[15px] font-medium max-w-[150px] md:w-[200px]'>
+                {el.title}
+              </h4>
+            </div>
+          ))}
         </div>
-      )}
-      {searchStatus === 'notfound' && (
-        <h1 className='text-white'>
-          {whichLang() ? 'Ничего не найдено' : 'Not found'}
-        </h1>
-      )}
+      </div>
     </div>
   )
 }

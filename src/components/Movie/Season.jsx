@@ -2,40 +2,44 @@ import Slider from 'react-slick'
 import { settingsSeason } from '../../constants/_slider'
 
 export const MovieSeason = ({ season, lang }) => {
+  console.log(season);
+  
   return (
     <div>
-      <div className='flex gap-4 md:gap-12 items-start font-["Inter"]'>
-        <div className='max-w-96 flex-col'>
-          <img
-            className='max-w-[150px] md:max-w-96'
-            src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
-            alt='none'
-          />
-        </div>
-        <div className='text-white flex flex-col gap-y-[30px]'>
-          <div className='space-y-2'>
-            <h1 className='text-xl md:text-4xl md:max-w-[800px]'>
-              {season.title}
-            </h1>
-            <p className='text-white md:max-w-2xl text-sm md:text-xl'>
-              {season.overview}
-            </p>
+      <div className='flex gap-4 md:gap-40 items-start font-["Inter"]'>
+        <div className='flex gap-20'>
+          <div className='max-w-96 flex-col'>
+            <img
+              className='max-w-[150px] md:max-w-96'
+              src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
+              alt='none'
+            />
           </div>
-          <div className='hidden md:block'>
-            <Slider {...settingsSeason} className='max-w-[500px] cursor-grab'>
-              {season.episodes?.map((el, i) => (
-                <div>
-                  <img
-                    className='w-[500px] h-[290px]'
-                    src={`https://image.tmdb.org/t/p/w500${el.still_path}`}
-                    alt='none'
-                  />
-                  <p>
-                    {i + 1}.{el.name}
-                  </p>
-                </div>
-              ))}
-            </Slider>
+          <div className='text-white flex flex-col gap-y-[30px]'>
+            <div className='space-y-2'>
+              <h1 className='text-xl md:text-4xl md:max-w-[800px]'>
+                {season.title}
+              </h1>
+              <p className='text-white md:max-w-2xl text-sm md:text-xl'>
+                {season.overview}
+              </p>
+            </div>
+            <div className='hidden md:block'>
+              <Slider {...settingsSeason} className='max-w-[500px] cursor-grab'>
+                {season.episodes?.map((el, i) => (
+                  <div>
+                    <img
+                      className='w-[500px] h-[290px]'
+                      src={`https://image.tmdb.org/t/p/w500${el.still_path}`}
+                      alt='none'
+                    />
+                    <p>
+                      {i + 1}.{el.name}
+                    </p>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
         <div className='text-white ml-12 space-y-[50px] hidden md:block'>

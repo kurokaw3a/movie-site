@@ -9,7 +9,7 @@ export const MovieSeasonsList = ({ movie }) => {
   }
   return (
     <div className='text-white md:ml-12 md:space-y-50px]'>
-      <div className='max-h-[500px] overflow-y-auto hidden md:block'>
+      <div className='max-h-[550px] overflow-y-auto hidden md:block'>
         {movie.seasons?.map(
           (el) =>
             el.poster_path && (

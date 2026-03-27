@@ -8,6 +8,7 @@ import { getFilmById, getTvById } from '../services/MyCinema/MyCinemaAction'
 import { MovieSeasonsList } from '../components/Movie/Seasons'
 import { MovieTrailers } from '../components/Movie/Trailers'
 
+
 export const MoviePage = () => {
   const { title, type, id } = useParams()
   const en = /[A-za-zA-Z]/.test(title.slice(0, 6))
@@ -36,15 +37,16 @@ export const MoviePage = () => {
   const { currentMovie, currentMovieStatus } = useSelector(
     (state) => state.cinema
   )
+  
   return currentMovieStatus === 'pending' ? (
     <Loader />
   ) : (
-    <div>
-      <div className='md:flex'>
+    <div className='md:flex'>
+      <div className='md:flex flex-col'>
         <MovieInfo movie={currentMovie} lang={en} />
-        <MovieSeasonsList movie={currentMovie} />
+        <MovieTrailers movie={currentMovie} />
       </div>
-      <MovieTrailers movie={currentMovie} />
+      <MovieSeasonsList movie={currentMovie} />
     </div>
   )
 }

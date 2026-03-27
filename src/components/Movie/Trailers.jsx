@@ -8,7 +8,7 @@ export const MovieTrailers = ({ movie }) => {
       <div className='mt-[5px] flex justify-center md:block'>
         {movie.videos?.length > 1 && (
           // <Slider {...settings3} className='w-[350px] max-w-[350px] md:w-max md:max-w-[600px] cursor-grab'>
-          <div className='flex items-center gap-[20px] overflow-auto'>
+          <div className='max-w-[1100px] flex items-center gap-[20px] overflow-auto'>
             {movie.videos?.map((el) => (
               <iframe
                 title='trailer'
