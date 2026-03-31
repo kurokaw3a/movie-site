@@ -7,6 +7,6 @@ function ru (){
 }
 
 export function whichLang () {
-   return localStorage.getItem('#l34') === "en" ? en() : ru()
+   return localStorage.getItem('#l34') === "en" ? en() : localStorage.getItem('#l34') === "ru" ? ru() : "en"
 }
 

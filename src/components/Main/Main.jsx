@@ -11,7 +11,7 @@ const Main = ({ list, selectLanguage, nextPage, prevPage, page }) => {
   }
 
   return (
-    <div>
+    <div className='p-4 max-[360px]:p-0 md:p-0'>
       <div className='flex items-baseline justify-between'>
         <h1 className="text-white text-2xl md:text-3xl font-['Inter'] mb-[20px]">
           {whichLang() ? 'В тренде' : 'Trending Now'}
@@ -40,7 +40,7 @@ const Main = ({ list, selectLanguage, nextPage, prevPage, page }) => {
         </div>
       </div>
 
-      <div className='flex flex-wrap justify-between gap-y-[20px]'>
+      <div className='flex flex-wrap gap-y-[20px] justify-between'>
         {list?.map((el) => (
           <div
             onClickCapture={() => navToCurrentMovie(el.title, el.type, el.id)}

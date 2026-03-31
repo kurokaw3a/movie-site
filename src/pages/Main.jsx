@@ -35,14 +35,12 @@ export const MainPage = () => {
   return popularFilmsStatus === 'pending' ? (
     <Loader />
   ) : (
-    <div>
-      <Main
-        list={popularFilmsResult}
-        selectLanguage={selectLanguage}
-        page={page}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
-    </div>
+    <Main
+      list={popularFilmsResult}
+      selectLanguage={selectLanguage}
+      page={page}
+      nextPage={nextPage}
+      prevPage={prevPage}
+    />
   )
 }

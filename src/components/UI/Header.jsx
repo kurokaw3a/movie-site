@@ -1,23 +1,22 @@
-import { useNavigate } from 'react-router-dom'
-import { MyCinemaSlice } from '../../services/MyCinema/MyCinemaSlice'
-import { useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { whichLang } from '../../constants/_language'
 
-const Header = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const searchFilm = (event) => {
-    event.preventDefault()
-    dispatch(MyCinemaSlice.actions.clear())
-    if (event.target[0]?.value?.trim()?.length >= 2) {
-      navigate(`/${event.target[0]?.value}`)
-    }
+const Header = ({ searchFilm }) => {
+  const NavLinkClass = ({ isActive, isPending }) => {
+    return isPending ? '' : isActive ? 'underline' : ''
   }
-
   return (
     <header className='w-full flex items-center justify-center pr-10 pl-10 h-[80px] md:gap-[5px] bg-gradient-to-b from-zinc-950 to-[rgb(26,26,26)] font-["Inter"]'>
       <div>
-        <nav>
+        <nav className='flex items-center gap-20'>
+          <div className='md:flex hidden text-white font-[600]  gap-5'>
+            <NavLink to='/' className={NavLinkClass}>
+              Home
+            </NavLink>
+            <NavLink to='/likes' className={NavLinkClass}>
+              Likes
+            </NavLink>
+          </div>
           <form onSubmit={searchFilm}>
             <input
               className='w-[300px] md:w-[500px] h-8 text-xl pl-3 bg-[#303030] rounded outline-none text-white'

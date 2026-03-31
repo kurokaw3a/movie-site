@@ -10,7 +10,8 @@ export const Root = () => {
     <Routes>
       <Route path='' element={<Layout />}>
         <Route path='/' element={<MainPage />} />
-        <Route path='/:keyword' element={<ResultsPage />} />
+        <Route path='/likes' element='' />
+        <Route path='/search/:keyword' element={<ResultsPage />} />
         <Route path='/:title/:type/:id' element={<MoviePage />} />
         <Route path='/:title/:type/:id/:season' element={<SeasonPage />} />
       </Route>
