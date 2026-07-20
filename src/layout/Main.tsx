@@ -38,7 +38,7 @@ export const MainLayout = () => {
   };
   return (
     <>
-      <header className="bg-linear-to-b z-1 from-[#00000050] to-transparent flex items-center h-22 md:pl-20 md:pr-20 pl-10 pr-10">
+      <header className="bg-linear-to-b from-[#00000050] to-transparent flex items-center h-22 md:pl-20 md:pr-20 pl-10 pr-10">
         <div className="container">
           <div className="flex items-baseline justify-between">
             <div className="flex items-baseline gap-10">
