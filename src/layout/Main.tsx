@@ -6,7 +6,7 @@ import { useDebounceCallback } from "../hooks/useDebounce";
 
 export const MainLayout = () => {
   const [language, setLanguage] = useState<string>(
-    String(localStorage.getItem("justwatchlanguage")),
+    String(localStorage.getItem("justwatchlanguage")) || "en",
   );
   const languageHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value);
@@ -29,7 +29,9 @@ export const MainLayout = () => {
   const { data: movieResult } = useGetSearchMovieQuery(keyword);
   const { data: tvResult } = useGetSearchTvQuery(keyword);
 
-  const result = movieResult?.results.concat(tvResult ? tvResult.results : []).reverse();
+  const result = movieResult?.results
+    .concat(tvResult ? tvResult.results : [])
+    .sort((a, b) => b.vote_average - a.vote_average);
 
   const goToMedia = () => {
     setKeyword("");
@@ -40,7 +42,12 @@ export const MainLayout = () => {
         <div className="container">
           <div className="flex items-baseline justify-between">
             <div className="flex items-baseline gap-10">
-              <NavLink to='/' className="text-xl text-yellow-400">Justwatch</NavLink>
+              <NavLink
+                to="/"
+                className="hidden md:block text-xl text-yellow-400"
+              >
+                Justwatch
+              </NavLink>
               <nav className="hidden md:flex gap-10 text-white">
                 {paths.map((el, i) => (
                   <NavLink

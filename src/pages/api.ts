@@ -9,11 +9,11 @@ export const homeApi = baseApi.injectEndpoints({
     }),
     getSearchMovie: builder.query<IMedia, string>({
       query: (keyword: string) =>
-        `/search/movie?query=${keyword}&language=${/[A-za-zA-Z]/.test(keyword) ? "en" : "ru"}`,
+        `/search/movie?query=${keyword}&language=${String(localStorage.getItem("justwatchlanguage"))}`,
     }),
     getSearchTv: builder.query<IMedia, string>({
       query: (keyword: string) =>
-        `/search/tv?query=${keyword}&language=${/[A-za-zA-Z]/.test(keyword) ? "en" : "ru"}`,
+        `/search/tv?query=${keyword}&language=${String(localStorage.getItem("justwatchlanguage"))}`, // /[A-za-zA-Z]/.test(keyword) ? "en" : "ru"
     }),
     getMovieById: builder.query<MovieDetails, string>({
       query: (id: string) =>
