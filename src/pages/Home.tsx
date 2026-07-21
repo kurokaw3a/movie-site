@@ -24,9 +24,9 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col items-center gap-5">
       <section className="flex flex-col gap-5">
-        <h1 className="text-xl text-white">
+        <h1 className="text-xl text-white font-semibold">
           {localStorage.getItem("justwatchlanguage") === "en"
             ? "Trending"
             : "В тренде"}
@@ -38,7 +38,7 @@ export const HomePage = () => {
               key={i}
             >
               <img
-                className="w-35 md:w-60 transition duration-200 hover:-translate-y-3 cursor-pointer select-none"
+                className="w-40 md:w-60 transition duration-200 hover:-translate-y-3 cursor-pointer select-none"
                 src={`https://image.tmdb.org/t/p/w1280/${el.poster_path}`}
                 alt="poster"
               />
@@ -50,13 +50,13 @@ export const HomePage = () => {
         <div className="flex gap-3">
           <div
             onClick={prevPage}
-            className="flex text-white bg-zinc-800 p-2 pt-0 pb-0 rounded cursor-pointer"
+            className="flex text-xl xs:text-lg text-yellow-400 bg-zinc-800 p-2 pt-0 pb-0 rounded cursor-pointer"
           >
             {page}
           </div>
           <div
             onClick={nextPage}
-            className="flex text-white bg-zinc-800 p-2 pt-0 pb-0 rounded cursor-pointer"
+            className="flex text-xl xs:text-lg text-white bg-zinc-800 p-2 pt-0 pb-0 rounded cursor-pointer"
           >
             {page + 1}
           </div>

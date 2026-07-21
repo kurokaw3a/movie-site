@@ -40,15 +40,15 @@ export const MainLayout = () => {
     <div style={{ isolation: "isolate" }}>
       <header className="bg-linear-to-b from-[#00000050] to-transparent flex items-center h-22 md:pl-20 md:pr-20 pl-10 pr-10">
         <div className="container">
-          <div className="flex items-baseline justify-between">
+          <div className="flex items-baseline justify-center xs:justify-between">
             <div className="flex items-baseline gap-10">
               <NavLink
                 to="/"
-                className="hidden md:block text-xl text-yellow-400"
+                className="hidden xs:block font-bold text-xl text-yellow-400"
               >
                 Justwatch
               </NavLink>
-              <nav className="hidden md:flex gap-10 text-white">
+              <nav className="hidden md:flex gap-10 text-white font-semibold">
                 {paths.map((el, i) => (
                   <NavLink
                     key={i}
@@ -79,7 +79,7 @@ export const MainLayout = () => {
                       ? "Search movies, tv and more"
                       : "Найти фильмы, сериалы"
                   }
-                  className="w-40 md:w-80 border border-[#ffffff50] rounded text-white outline-none p-1 pl-8 pr-3"
+                  className="w-40 sm:w-80 border border-[#ffffff50] rounded text-white outline-none p-1 pl-8 pr-3"
                 />
               </div>
 
@@ -128,7 +128,7 @@ export const MainLayout = () => {
           </div>
         </div>
       </header>
-      <main className="p-10 md:pl-20 md:pr-20">
+      <main className="p-5 md:pl-20 md:pr-20">
         <div className="container">
           <Outlet />
         </div>
